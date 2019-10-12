@@ -1,0 +1,105 @@
+
+\section{Thursday}\index{Thursday_lecture}
+\subsection{Fourier Transformation}
+\[f \in C_0^\infty(\mathbb{R}), f(x)
+\]
+\[\hat{f}(\xi)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-ix\xi}f(x)\diff x
+\]
+Fourier transform of $f$.\\
+\[e^{i\theta}=\cos\theta+i\sin\theta
+\]
+Use fourier transform to change PDE to ODE.
+\[\begin{aligned}\widehat{f}\p(\xi)&=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-ix\xi}f\p(x)\diff x\\
+&=-\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty(\deriva{x}e^{-ix\xi})f(x)\diff x\\
+&=i\xi\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-ix\xi}f(x)\diff x=i\xi \hat{f}(\xi)
+\end{aligned}
+\]
+
+\[\ut=\uxx,\quad u(x,0)=\varphi(x) on \mathbb{R}
+\]
+\[\hat{\ut}=\hat{\uxx}=i\xi\hat{\ux}=(i\xi)^2\hat{u}=-\xi^2\hat{u}
+\]
+\[\hat{\ut}(\xi,t)=-\xi^2\hat{u}(\xi,t)
+\]
+\[\hat{u}(\xi,t)=C(\xi)e^{-\xi^2t}
+\]
+\[\hat{u}(\xi,0)=\hat{\varphi}(\xi)=C(\xi)
+\]
+\[\hat{u}(\xi,t)=\hat{\varphi}(\xi)e^{-\xi^2t}
+\]
+Inverse Fourier Transform
+\[f(x)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{ix\xi}\hat{f}(\xi)\diff \xi
+\]
+\[u(x)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{ix\xi}\hat{\varphi}(\xi)e^{-\xi^2 t}\diff \xi=\frac{1}{2\pi}\int_{-\infty}^\infty(\int_{-\infty}^\infty e^{ix\xi-iy\xi-\xi^2t}\diff \xi)\varphi(y)\diff y
+\]
+where $\hat{\varphi}(\xi)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-iy\xi}\varphi(y)\diff y$
+\[K(x,y,t)=\frac{1}{2\pi}\int_{-\infty}^\infty e^{i(x-y)\xi-\xi^2t}\diff \xi=\frac{1}{2\pi}\int_{-\infty}^\infty e^{-t(\xi-\frac{i(x-y)}{2t})^2}e^{-\frac{(x-y)^2}{4t}}\diff \xi
+\]
+where $i(x-y)\xi-\xi^2t=-t[\xi^2-i\frac{x-y}{t}\xi+(\frac{i(x-y)}{2t})^2)]-\frac{(x-y)^2}{4t}$. We have
+\[\begin{aligned}K(x,y,t)&=\frac{1}{2\pi}e^{-\frac{(x-y)^2}{4t}}\int_{-\infty}^\infty e^{-t[\xi-i\frac{(x-y)}{2t}]^2}\diff \xi\quad t>0\\
+&=\frac{1}{2\pi}e^{-\frac{(x-y)^2}{4t}}\int_{-\infty}^\infty e^{-[\sqrt{t}\xi-\frac{i(x-y)}{2\sqrt{t}}]^2}\diff \xi
+\end{aligned}
+\]
+Let $\eta=\sqrt{t}\xi-\frac{i(x-y)}{2\sqrt{t}}$ and $\diff \eta=\sqrt{t}\diff \xi$. Above is equal to \[\frac{1}{2\pi}e^{-\frac{(x-y)^2}{4t}}(\int_{-\infty}^\infty e^{-\eta^2}\diff \eta)\frac{1}{\sqrt{t}}=\frac{1}{\sqrt{4\pi t}}e^{-\frac{(x-y)^2}{4t}} 
+\]
+\[K(x,y,t)=\frac{1}{\sqrt{4\pi t}}e^{-\frac{(x-y)^2}{4t}} \text{  Heat Kernel}
+\]
+\[u(x,t)=\frac{1}{\sqrt{4\pi t}}\int_{-\infty}^\infty e^{-\frac{(x-y)^2}{4t}}\varphi(y)\diff y=\int_{-\infty}^\infty K(x,y,t)\varphi(y)\diff y
+\]
+\begin{theorem}
+Let $\varphi$ be a bounded continuous function on $\mathbb{R}$. Then 
+\[u(x,t)=\int_{-\infty}^\infty K(x,y,t)\varphi(y)\diff y=\frac{1}{\sqrt{4\pi t}}\int_{-\infty}^\infty e^{-\frac{(x-y)^2}{4t}}\varphi(y)\diff y, ~t>0\] 
+is a solution for $\ut=\uxx$ with $\lim_{x\rightarrow x_0~ t\rightarrow0}u(x,t)=\varphi(x_0)$ for any $x_o\in\mathbb{R}$. 
+
+\end{theorem}
+\begin{proof}
+Basic properties of $K:t>0$\\
+(1) $K$ is $C^\infty$ $\forall x,y \in \mathbb{R}, t>0$\\
+(2) $(K_t-K_{xx})(x,y,t)=0, ~t>o$\\
+(3) $K(x,y,t)>0$\\
+(4) $\int_{-\infty}^\infty K(x,y,t)\diff y=1~\forall x\in\mathbb{R}, t>0$\\
+(5) For any $\epsilon>0$, $\int K(x,y,t)\diff y\rightarrow0$ uniformly in x, as $t\rightarrow0~|x-y|>\epsilon$ 
+\end{proof}
+\begin{remark}
+1.$u\in C^\infty$ as soon as $t$ becomes positive.\\
+2. Speed of propogation of `` heat'' transfer is $\infty$.\\
+3. $\inf_{x\in\mathbb{R}}\varphi(x)\leq u(x,t)\leq \sup_{x\in\mathbb{R}}\varphi(x)$ (Max principle. )\\
+4. Soltion is NOT unique.
+
+\end{remark}
+
+List of Properties:function $\rightarrow$ after transformation
+\begin{itemize}
+\item $f\p(x)$ $\rightarrow$  $i\xi\hat{f}(\xi)$\\
+\item $xf(x)$  $\rightarrow$  $i\hat{f}\p(\xi)$\\
+\item $f(x-a)$  $\rightarrow$  $e^{-ia\xi}\hat{f}(\xi)$\\
+\item $e^{iax}$  $\rightarrow$  $ \hat{f}(\xi-a)$\\
+\item $f(ax)$  $\rightarrow$  $\frac{1}{|a|}\hat{f}(\frac{\xi}{a})$, $(a\neq0)$
+\end{itemize}
+\begin{definition}
+A distribution is a linear functional $f[\phi]$ defined for all $\phi\in C_0^\infty(\Omega)$, which is continuous in the following sense:\\
+Let $\{\phi_k\}$ a sequence of functions in $C_0^\infty(\Omega)$ s.t. \\
+(i) Support $\phi_l\subset K<< \Omega, \forall l$ (K: independent of l)\\
+(ii) $D^\alpha\phi_l\rightarrow 0$ uniformly in $x\in \Omega$ for each $\alpha$.\\
+Then $\lim_{l\rightarrow\infty}f[\phi_l]=0$
+\end{definition}
+\begin{remark}
+Support is a mathematical concept.
+\end{remark}
+\begin{example}
+1 $f$ is a functional. $f[\phi]=\int_\Omega f\phi\quad \phi\in C_0^\infty(\Omega)$\\
+2. Dirac $\delta$-function, x is fixed in $\Omega$
+\[\delta_x[\phi]=\int_\Omega\delta_x\phi=\phi(x)
+\]
+\end{example}
+List: function $\rightarrow$ Fourier transformation\\
+$\delta(x)\rightarrow \frac{1}{2\pi}$\\
+$e^{-a|x|}\rightarrow\frac{1}{\sqrt{2\pi}}\frac{2a}{a^2+\xi^2}~a>0$\\
+$1\rightarrow\sqrt{2\pi}\delta(\xi)$\\
+$e^{-\frac{x^2}{2}}\rightarrow e^{-\frac{\xi^2}{2}}$\\
+$H(a-|x|)\rightarrow \frac{1}{2\pi}\frac{2}{\xi}\sin(a\xi), a>0$
+\begin{remark}
+$\hat{f}\p$ and $\widehat{f\p}$ are different. Be careful.
+
+\end{remark}
+

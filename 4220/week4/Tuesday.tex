@@ -1,0 +1,72 @@
+
+\chapter{Week4}
+
+\section{Tuesday}\index{Tuesday_lecture}
+\subsection{Inhomogeneous Wave Equation}
+\[\dakuohaotri{u_{tt}-c^2u_{xx}=f(x,t)\qquad x\in[o,L], ~t\geq0}{u(x,0)=\varphi(x), u_t(x,0)=\psi(x), ~x\in[0,L]}{u(0,t)=h(t), ~u(L,t)=k(t)}
+\]
+Assume $h(0)=k(0)=0$.Write 
+ \[u(x,t)=\sum_{n=1}^\infty u_n(t)\sin\frac{n\pi x}{L},~u_n(t)=\frac{2}{L}\int_0^L u(x,t)\sin\frac{n\pi x}{L}\diff x\] 
+\[\quad f(x,t)=\sum_{n=1}^\infty f_n(t)\sin\frac{n\pi x}{L},~f_n(t)=\frac{2}{L}\int_0^L f(x,t)\sin\frac{n\pi x}{L}\diff x\]
+\[u_{tt}(x,t)=\sum_{n=1}^\infty V_n(t)\sin \frac{n\pi x}{L},\quad  V_n(t)=\frac{2}{L}\int_0^L u_{tt}(x,t)\sin \frac{n\pi x}{L}\diff x=\frac{\diff^2u_n}{\diff t}
+\]
+\[u_{xx}(x,t)=\sum_{n=1}^\infty w_n(t)\sin\frac{n\pi x}{L},\quad w_n(t)=\frac{2}{L}\int_0^L u_{xx}(x,t)\sin \frac{n\pi x}{L}\diff x
+\]
+\[\begin{aligned}w_n(t)&=\frac{2}{L}\int_0^L \uxx(x,t)\sin\frac{n\pi x}{L}\diff x\\
+&=\frac{2}{L}[\ux\sin\frac{n\pi x}{L}|_0^L-\frac{n\pi}{L}\int_0^L\ux\cos \frac{n\pi x}{L}\diff x]\\
+&=-\frac{2n\pi}{L^2}[n\cos\frac{n\pi x}{L}|_0^L+\frac{n\pi}{L}\int_0^Lu\sin\frac{n\pi x}{L}\diff x]\\
+&=-\frac{2n\pi}{L^2}[u(L,t)(-1)^n-u(0,t)+\frac{n\pi}{L}\int_0^Lu\sin\frac{n\pi x}{L}\diff x]\\
+&=-\frac{2n\pi}{L^2}[(-1)^nk(t)-h(t)+\frac{n\pi}{2}u_n(t)]\\
+&=\frac{2n\pi}{L^2}[h(t)-(-1)^nk(t)]-(\frac{n\pi}{L})^2u_n(t)
+\end{aligned}
+\]
+\[v_n(t)-c^2w_n(t)=\frac{2}{L}\int_0^L(u_{tt}-c^2\uxx)\sin\frac{n\pi x}{L}\diff x=\frac{2}{L}\int_0^Lf(x,t)\sin\frac{n\pi x}{L}\diff x=f_n(t)
+\]
+\[\frac{\diff^2u_n}{\diff t^2}+c^2\lambda_nu_n(t)-\frac{2n\pi}{L^2}[h(t)-(-1)^nk(t)]c^2=f_n(t),~n\geq1
+\]
+Solve this ODE of $u_n$, we get the solution.\\
+%\[\dakuohao{u_tt-c^2\uxx=f(x,t)}{u(0,t)=u(L,t)=0}
+%\]
+\[\dakuohao{u_{tt}-c^2\uxx=f(x,t)}{u(0,t=u(L,t)=0}
+\]
+To solve
+\[\dakuohao{U_{tt}-c^2U_{xx}=g(x,t)}{U(0,L)=h(t), U(L,t)=k(t)}
+\]
+Set $\rho(x,t)=\frac{(L-x)}{L}h(t)+\frac{x}{L}k(t)~\Rightarrow~ \rho(0,t)=h(t),~\rho(L,t)=k(t)$
+\[u(x,t)=U(x,t)-\rho(x,t)
+\]
+\[u_{tt}-c^2\uxx=U_{tt}-c^2U_{xx}-\rho_{tt}+c^2\rho_{xx}=g(x,t)-\frac{L-x}{L}h_{tt}-\frac{x}{L}k_{tt}=f(x,t)
+\]
+Set $U(x,t)=u(x,t)+\frac{L-x}{L}h(t)+\frac{x}{L}k(t)$.
+
+
+%%%%%%%%%%%%%%%%%%
+To solve the given inhomogeneous problem
+\[\dakuohao{U_{tt}-c^2U_{xx}=g(x,t)}{U(0,L)=h(t), U(L,t)=k(t)}
+\]
+Set $f(x,t)=g(x,t)-\frac{L-x}{L}h_{tt}(t)-\frac{x}{L}k_{tt}(t)$ and we know the solution for $\dakuohao{u_tt-c^\uxx=f(x,t)}{u(0,t)=0,~u(L,t)=0}$ Then $U(x,t)=u(x,t)+\frac{L-x}{L}h(t)+\frac{x}{L}k(t)$ solves.
+%%%%%%%%%%%%
+Solve $\dakuohao{v_{tt}-c^2v_{xx}=0}{v(x,0)=\varphi(x), v_t(x,0)=\psi(x)}\Rightarrow U+v$\\
+
+\[\dakuohaotri{u_{tt}-c^2\uxx=f(x,t)\quad x\in\mathbb{R},t\geq0}{u(x,0)=\varphi(x)}{u_r(x,0)=\psi(x)}
+\]
+\[u(x,t)=\frac{1}{2}(\varphi(x+ct)+\varphi(x-ct))+\frac{1}{2c}\int_{x-ct}^{x+ct}\psi(y)\diff y+\frac{1}{2c}\int\int_Df(y,s)\diff y\diff s
+\]
+Duhamel's Principle
+\[\dakuohaotri{\frac{\diff^2v}{\diff t^2}+A^2v=f(t)}{v(0)=a}{v\p(0)=b}
+\]
+Let $S(t)=\frac{1}{A}\sin At~\Rightarrow ~v(t)=S\p(t)a+S(t)b+\int_0^tS(t-s)f(s)\diff s$\\
+Pluge $S$ in the system of equations. We get the solution. (Remind what we do in ODE with variation of parameter. This two method is the same in essence. In addition, what we do in PDE is similiar.)
+
+
+
+
+
+
+
+
+
+
+
+
+

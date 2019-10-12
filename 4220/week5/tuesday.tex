@@ -1,0 +1,103 @@
+
+\chapter{Week5}
+\section{Tuesday}\index{Tuesday_lecture}
+\subsection{Heat Equation}
+%\[\ut=c^2\uxx \qqaud (=c^2 \triangle u=c^2(u_{x_1x_1}+\cdots+u_{x_nx_n}))
+%\]
+We will restrict to one dimension.
+\[\dakuohaotri{\ut=c^2\uxx}{u(x,0)=\varphi(x)}{u(0)=u(L)=0 \quad \text{ (Dirichlet B.C.)}}
+\]
+Dirichlet means keep temperature on the boundary to be zero. Neumann B.C. ( $\ux (0)=\ux(L)=0$) means the tube is insulated.
+\[u(x,t)=X(x)T(t)
+\]
+\[\ut=XT\p
+\]
+\[\uxx=X\pp T 
+\]
+\[XT\p=c^2X\pp T
+\]
+\[\frac{T\p}{c^2T}=\frac{X\pp}{X}=-\lambda ~(\text{ a constant})
+\]
+\[X\pp+\lambda X=0
+\]
+\[u(0,t)=X(0)T(t)=0
+\]
+\[\dakuohao{X\pp+\lambda X=0}{X(0)=X(L)=0}
+\]
+(Previous calculation $\rightarrow$)
+\[\lambda=(\frac{n\pi}{L})^2,~ X(x)=\sin\frac{n\pi x}{L},~n=1,2\dots
+\]
+\[T\p=c^2T[-\frac{n\pi }{L}]^2=-(c\frac{n\pi }{L})^2T
+\]
+\[T(t)=e^{-(\frac{cn\pi }{L})^2t}
+\]
+\[u(x,t)=cost. e^{-(\frac{cn\pi }{L})^2t}\sin(\frac{n\pi x}{L})
+\]
+\[u(x,t)=\sum\alpha_n e^{-(\frac{cn\pi}{L})^2t}\sin(\frac{n\pi x}{L})
+\]
+\[u(x,0)=\varphi(x)=\sum_{n=1}^\infty \alpha_n\sin\frac{n\pi x}{L}
+\]
+\[\Rightarrow \alpha_n=\varphi_n= \text{ the Fourier coeff. of } \varphi=\frac{2}{L}\int_0^L\varphi(x)\sin\frac{n\pi x}{L}\diff x
+\]
+\[u(x,t)=\sum_{n=1}^\infty \varphi_n\sin \frac{n\pi x}{L}e^{-(\frac{cn\pi }{L})^2t}
+\]
+Suppose $\varphi$ is bounded on [0,L] , $|\varphi|\leq M$
+\[\Rightarrow |\varphi_n|\leq\frac{2}{L}\int_0^L|\varphi||\sin\frac{n\pi x}{L}|\diff x\leq\frac{2}{L}\int_0^L M=2M
+\]
+$\sum_{n=1}^\infty e^{-\beta n^2}$ is convergent, by ratio test, implies the convergence of $u$.\\
+Smoothing effect:\\
+Suppose the initial value $\varphi$ is bounded. Then as soon as $t$ becomes positive, the solution becomes $C^\infty$ smooth.\\
+Rk: $\varphi$ could be even discontinuous and the conclusion still holds.
+
+\[u_N(x,t)=\sum_{n=1}^N\varphi_n\sin\frac{n\pi x}{L}e^{-(\frac{cnt}{L})^2t}\rightarrow u(x,t) 
+\]
+
+A lemma to show the limit is a smooth function:
+Suppose that $f_n$ converges to $f$ on [a,b] and $f\p_n\rightarrow g$ uniformly on [a,b]. Then $f\p=g$.\\
+Proof. 
+\[f_n(x)=f_n(a)=\int_a^x f\p_n(y)\diff y, n\rightarrow\infty
+\]
+\[f(x)=f(a)+\int_a^xg(y)\diff y
+\]
+\text{\red \%\%\% back to the proof }
+t is fixed
+\[\deriv{u_N(x,t)}{x}=\sum_{n=1}^N\varphi_n\cos\frac{n\pi x}{L}e^{-(\frac{cnt}{L})^2t}(\frac{n\pi}{L})
+\]
+The derivative converges to $g$ uniformly by ratio test. The derivative is infinitely differentiable. Therefore, smoothing effect is true.
+\begin{theorem}
+Uniqueness:
+\[\dakuohaotri{\ut=c^2\uxx}{u(x,0)=\varphi(x)}{u(0)=u(L)=0 }
+\]
+The solution is unique.
+\end{theorem}
+\begin{proof}
+Suppose we have 2 solutions $u_1$ and $u_2$. Set $u=u_1-u_2$. Then $u$ satisfies:
+\[\ut=c^2\uxx in (0,L), u(x,0)=0, u(0,t)=u(L,t)=0
+\]
+\[E(t)=\int_0^Lu^2(x,t)\diff x
+\]
+\[E\p(t)=\int_0^Lu\ut\diff x=\int_0^Lu\uxx\diff x=-\int_0^L\ux\ux+u\ux|_0^L=-\int_0^L\ux^2\leq0
+\]
+E(t) is non-increasing.
+i.e. $E(t)\leq E(0)~\forall t\geq 0$
+$E(0)=\frac{1}{2}\int_0^Lu^2(x,0)\diff x=0$
+\[\Rightarrow  E(t)=0=\frac{1}{2}u^2(x,t)\diff x
+\]
+\[u(x,t)\equiv0 in x, and t
+\]
+\[i.e. u_1(x,t)\equiv u_2(x,t)
+\]
+\end{proof}
+
+Backwards Uniqueness\\
+Q: Suppose that $u$ is a solution for
+\[\dakuohao{\ut=\uxx, x\in[0,L]}{u(x,0)=\varphi(x), x\in[0,L]}{u(0,t)=u(L,t)=0, t\geq 0}
+\]
+Suppose $u(x,T)\equiv0~\forall x\in[0,L]$ for some $T>0$. Then, what can you conclude about the initial value $\varphi(x)$? Yes is 0\\
+Well-posedness. Uniqueness, existence, dependence.
+
+
+
+
+
+

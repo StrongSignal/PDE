@@ -1,0 +1,110 @@
+
+\chapter{week4}
+
+\section{Thursday}\index{Thursday_lecture}
+\subsection{}
+\[\dakuohao{u_{tt}-c^2\uxx=f(x,t)}{u(x,0)=\varphi(x),~ u_t(x,0)=\psi(x)}
+\]
+\[\dakuohao{v_{tt}-c^2v_{xx}=0}{v(x,0)=\varphi(x),~ v_t(x,0)=\psi(x)}
+\]
+$\tilde{u}=u-v$
+\[\Rightarrow ~\dakuohao{\tilde{u}_{tt}-c^2\tilde{u}_{xx}=f(x,t)}{\tilde{u}(x,0)=0,~\tilde{u}_t(x,0)=0}
+\]
+\[\begin{aligned}\tilde{u}(x,t)&=\frac{1}{2c}\int\int_Df(y,s)\diff y\diff s\\
+&=\frac{1}{2c}\int_0^t\int_{x-c(t-s)}^{x+c(t-s)}f(y,s)\diff y\diff s\\
+&=\int_0^t(\frac{1}{2c}\int_{x-c(t-s)}^{x+c(t-s)}f(y,s)\diff y)\diff s
+\end{aligned}
+\]
+For each fixed $0\leq s\leq t$\\
+\[\dakuohao{U_{tt}-c^2U_{xx}=0}{U(x,s)=0,~ U_t(x,s)=f(x,s)}\text{  from s to t}
+\]
+i.e. $U(x,t,s)$ is a solution for 
+\[\dakuohao{U_{tt}-c^2U_{xx}=0}{U(x,s,s)=0,~U_t(x,s,s)=f(x,s)}
+\]
+\[\tilde{u}(x,t)=\int_0^tU(x,t,s)\diff s 
+\]
+\[U(x,t,s)=\frac{1}{2c}\int_{x-c(t-s)}^{x+c(t-s)}f(y,s)\diff y
+\]
+
+Check the answer was right
+\[\tilde{u}_t=U(x,t,t)+\int_0^tU_t(x,t,s)\diff s
+\]
+\[\begin{aligned}\tilde{u}_{tt}&=U_t(x,t,t)+\int_0^tU_{tt}(x,t,s)\diff s\\
+&=f(x,t)+\int_0^tc^2U_{xx}(x,t,s)\diff s\\
+&=f(x,t)+c^2\tilde{u}_{xx}(x,t)
+\end{aligned}
+\]
+\[\tilde{u}_{tt}-c^2\tilde{\uxx}=f(x,t)
+\]
+Go through initial boundary problem once more.
+\[\dakuohaotri{u_{tt}-c^2\uxx=f(x,t),~0\leq x\leq L,~t\geq0}{u(x,0)=\varphi(x), u_t(x,0)=\psi(x)}{u(0,t)=h(t),~u(L,t)=k(t)}
+\]
+\[\rho(x,t)=\frac{L-x}{L}h(t)+\frac{x}{L}k(t)
+\]
+\[\tilde{u}(x,t)-\rho(x,t)
+\]
+\[\begin{aligned}&\tilde{u}_{tt}-c^2\tilde{\uxx}\\
+=&u_{tt}-\rho_{tt}-c^2\uxx+c^2\rho_{xx}\\
+=&f(x,t)-[\rho_{tt}-c^2\rho_{xx}]\\
+\equiv&\tilde{f}(x,t)
+\end{aligned}
+\]
+%%%
+\text{\red \%\%\%\%\%}
+\[\tilde{u}_{tt}-c^2\tilde{u}_{xx}=\tilde{f}(x,t)
+\]
+\[\tilde{u}(x,0)=\varphi(x)-[\frac{L-x}{L}h(0)+\frac{x}{L}k(0)]~\equiv\tilde{\varphi(x)}
+\]
+\[\tilde{u}_r(x,0)=\psi(x)-[\frac{L-x}{L}h\p(0)+\frac{x}{L}k\p(0)]~\equiv\tilde{\psi}(x)
+\]
+%%%%%%
+\text{\red \%\%\%\%\%}
+\[\tilde{u}(0,t)=u(0,t)-\rho(0,t)=h(t)-h(t)=0
+\]
+\[\tilde{u}(L,t)=u(L,t)-\rho(L,t)=k(t)-k(t)=0
+\]
+\[\dakuohaotri{\tilde{u}_{tt}-c^2\tilde{u}_{xx}=\tilde{f}(x,t)}{\tilde{u}(x,0)=\tilde{\varphi}(x)~ \tilde{u}_t(x,0)=\tilde{\psi}(x)}{\tilde{u}(0,t)=0=\tilde{u}(L,t)}
+\]
+\[\dakuohaotri{v_{tt}-c^2v_{xx}=0}{v(x,0)=\tilde{\varphi(x)},~v_t(x,0)=\tilde{\psi}(x)}{v(0,t)=0=v(L,t)}
+\]
+$u^*=\tilde{u}-v$
+\[\Rightarrow\dakuohaotri{u^*_{tt}-c^2u^*_{xx}=\tilde{f}(x,t)}{u^*(x,0)=0,~u^*_t(x,0)=0}{u^*(0,t)=0=u^*(L,t)}
+\]
+%%%%%%%5
+\text{\red \%\%\%\%\%}
+\[\dakuohao{u_{tt}-c^2\uxx=0}{u(x,0)=\varphi(x), u_t(x,0)=\psi(x)}
+\]
+$\Rightarrow$
+\[u(x,t)=\frac{1}{2}[\varphi(x+ct)+\varphi(x-ct)]+\frac{1}{2c}\int_{x-ct}^{x+ct}\psi(y)\diff y
+\]
+no ``smoothing'' effect
+
+%%%
+\text{\red \%\%\%\%\%}
+\[(*)\dakuohaotri{u_{tt}-c^2\uxx=f(x,t)}{u(x,0)=\varphi(x),~u_t(x,0)=\psi(x)}{u(0,t)=h(t), u(L,t)=k(t)}
+\]
+Fact: The solution is unique. Suppose both $u_1, u_2$ are solutions to (*), Set $v=u_1-u_2$\\
+\[\Rightarrow \dakuohaotri{v_{tt}-c^2v_{xx}=0}{v(x,0)=0,~v_t(x,0)=0}{v(0,t)=0,~v(L,t)=0}\Rightarrow v\equiv0
+\]
+Conservation Law
+\[\dakuohao{u_{tt}-c^2\uxx=0, x\in(0,L), t\geq0}{u(0,t)=0=u(L,t)}
+\]
+Energy
+\[E(t)=\frac{1}{2}\int_0^L[u_t^2(x,t)+c^2u_x^2(x,t)]\diff x
+\]
+\[E\p(t)=\int_0^L[u_tu_{tt}+c^2\ux u_{xt}]\diff x=c^2(u_t\ux)(L,t)-c^2(u_tu_x)(0,t)=0
+\]
+\[u_t(L,t)=0,~u_t(0,t)=0
+\]
+\[E\p\equiv0
+\]
+\[E(t)=E(0)=0
+\]
+\[E(0)=\frac{1}{2}\int_0^L[v_t^2(x,0)+c^2v_x^2(x,0)]\diff x
+\]
+\[v_t\equiv0,~v_x\equiv0
+\]
+
+
+
+

@@ -1,0 +1,71 @@
+
+
+\chapter{week3}
+
+\section{Thursday}\index{Thursday_lecture}
+\subsection{Fourier Series}
+On $[-\pi,\pi]$ want to approximate $f(x)$ by $a_0+a_1\cos x+b_1\sin x+a_2\cos 2x+b_2\sin 2x+\dots+a_k\cos kx+b_k \sin kx+\dots$.\\
+Want to show $\{1,\cos x,\sin x,\cos 2x,\sin 2x,\dots,\cos kx,\sin kx,\dots\}$ is a family of orthoganol functions s.t. they for a basis of continuous function space.\\
+Inner product:
+\[<f,g>=\int_{-\pi}^{\pi}f(x)g(x)\diff x
+\]
+The following is aim to show it is a orthoganol family.\\
+\[<1,\cos kx>=\int_{-\pi}^\pi 1\cdot\cos kx \diff x=\frac{1}{k}\sin kx|_{-\pi}^\pi=0
+\]
+\[<1,\sin lx>=\int_{-\pi}^\pi 1\cdot \sin lx\diff x=-\frac{1}{L}\cos lx|_{-\pi}^\pi=0
+\]
+\[\begin{aligned}<\cos kx,\cos lx>&=\int_{-\pi}^\pi]\cos kx\cos lx\diff x\\
+&=\frac{1}{2}\int_{-\pi}^\pi[\cos(k+l)x+\cos(k-l)x]\diff x\\
+&=\frac{1}{2}\int_{-\pi}^\pi \cos(k-l)x\diff x\\
+&=\begin{cases}0 \text{ if } k\neq l\\\pi \text{ if } k=l\neq0\end{cases}
+\end{aligned}
+\]
+Next we are going to find all their coefficient.\\
+Assume $f(x)=a_0+\sum_{k=1}^\infty(a_k\cos kx+b_k\sin kx)$.
+\[<f,1>=\int_{-\pi}^\pi f(x)\diff x\Rightarrow a_0=\frac{1}{2\pi}\int_{-\pi}^\pi f(x)\diff x
+\]
+\[<a_0+\sum_{k=1}^{\infty}(a_k\cos kx+b_k\sin kx),1>=<a_0,1>+\sum_{k=1}^{\infty}<a_k\cos kx+b_k\sin kx,1>=<a_0,1>=2\pi a_0
+\]
+\[<f,\cos x>=<a_0,\cos x>+\sum_{k=1}^\infty[<a_k\cos kx,\cos x>+<b_k\sin kx,\cos x>]=<a_1\cos x,\cos x>=a_1\pi
+\]
+\[a_1=\frac{1}{\pi}\int_{-\pi}^\pi f(x)\cos x\diff x
+\]
+\[b_1=\frac{1}{\pi}\int_{-\pi}^\pi f(x)\sin x\diff x
+\]
+\[a_k=\frac{1}{\pi}\int_{-\pi}^\pi f(x)\cos kx\diff x
+\]
+$a_0+\sum_{k=1}^N(a_k\cos kx+b_k\sin kx)\rightarrow f(x)$ for as $N\rightarrow \infty$  $\{1,\cos x,\sin x,\cos 2x,\sin 2x,\dots,\cos kx,\sin kx,\dots\}$ form a complete basis for function space.\\
+\[*\dakuohaotri{X\pp+\lambda X=0  \text{ in }(a,b)}{a_1X(a)+a_2X\p(a)=0}{\beta_1X(b)+\beta_2X\p(b)=0}
+\]
+$\alpha_1, \alpha_2, \beta_1, \beta_2$ are constants. $\alpha_1^2+\alpha_2^2>0,  \beta_1^2+\beta_2^2>0$
+\begin{theorem}
+(1) The eigenvalues of (*) form an increasing sequence $\lambda_1<\lambda_2<\lambda_3<\dots<\lambda_k<\dots\rightarrow \infty $.\\
+(2)For each eigenvalue $\lambda_k$ the corresponding eigenspace is 1-dimensional. Denote eigen function by $X_k$.\\
+(3) $X_k$ has exactly $k-1$ zeros in $(a,b)$.\\
+(4) $\{X_1, X_2, \dots, x_k,\dots\}$ is a family of orthogonal $f(n)$ i.e. $\int_a^b x_kx_l=0$ if $k\neq l$.\\
+(5)If $\varphi(x)$ is $C^2[a,b]$ then its eigen function expansion $\sum_{k=1}^\infty \varphi_k X_k$ converges to $\varphi(x)$ uniformly on $[a,b]$ when $\varphi_k=\frac{\int_a^b\varphi(x)X_k(x)\diff x}{\int_a^bX_k^2(x)\diff x}$\\
+(6)If $\varphi$ is only square intergrable i.e. if $\int_a^b\varphi^2(x)\diff x<\infty$, then $\int_a^b[\varphi(x)-\sum_{k=1}^N\varphi_kX_k(x)]^2\diff x]\rightarrow 0$ as $N\rightarrow \infty$.
+
+
+\end{theorem}
+(1)$\dakuohao{\alpha_1=1, \alpha_2=0}{\beta_1=1, \beta_2 =0}$ Dirichlet\\
+(2)$\dakuohao{\alpha_1=0,\alpha_2=1}{\beta_1=0, \beta_2=1}$ Neumann.\\
+The following is going to show when two solutions of $x\pp+\lambda x=0$ are different. $x_k$ is orthorganol to $x_l$.\\
+\[\dakuohao{x_k\pp+\lambda_kx_k=0}{x_l\pp+\lambda_lx_l=0}
+\]
+Multiply $x_l$ and $x_k$ correspondingly to two equations and then take the integral. We have
+\[0=\int_a^b(x_k\pp x_l-x_l\pp x_k)+\int_a^b(\lambda_k-\lambda_l)x_kx_l=(x_k\p-x_l\p-x_l\p x_k)|_a^b+\int_a^b(\lambda_k-\lambda_l)x_kx_l
+\]
+\[=x_k\p(b)x_l(b)-x_l\p(b)x_k(b)-x_k\p(a)x_l(a)+x_l\p(a)x_k(a)+\int_a^b(\lambda_k-\lambda_l)x_kx_l=0
+\]
+\[\int_a^bx_kx_l=0
+\]
+Sturm-Liouville
+\[\deriva{x}(p(x)\deriv{u}{x})+1(x)u=0
+\]
+
+
+
+
+
+
